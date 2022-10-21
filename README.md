@@ -2,7 +2,7 @@
 
 ## An attempt in making a website like [OMGPOP](https://en.wikipedia.org/wiki/OMGPop). 
 
-Website URL: [iluylm.com](iluylm.com)
+Website URL: [iluylm.com](http://iluylm.com/)
 
 Frontend: React, Javascript, Socket.io, Phaser and a few others.
 Backend: NodeJs, ExpressJs, socket.io, mongodb

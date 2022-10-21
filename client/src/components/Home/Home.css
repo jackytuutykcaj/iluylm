@@ -1,0 +1,32 @@
+.Home{
+    height: 100%;
+}
+.Home .spotlight{
+    float: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 70%;
+    height: 70%;
+    margin-top: 1%;
+    background-image: url('../../assets/panelbackground.png');
+}
+
+.Home .friends{
+    float: right;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 29%;
+    height: 99.7%;
+    margin-top: 1%;
+    background-image: url('../../assets/panelbackground.png');
+}
+
+.Home .lobby{
+    float: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 70%;
+    height: 27%;
+    margin-top: 1%;
+    background-image: url('../../assets/panelbackground.png');
+}

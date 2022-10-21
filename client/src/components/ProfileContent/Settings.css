@@ -1,0 +1,36 @@
+.Settings #pencil{
+    display: none;
+}
+
+.Settings .username:hover #pencil{
+    display: inline;
+}
+
+.Settings .email:hover #pencil{
+    display: inline;
+}
+
+.Settings .password:hover #pencil{
+    display: inline;
+}
+
+.Settings .username,.email,.password{
+    width: fit-content;
+}
+
+.Settings .editusername{
+    display: none;
+}
+
+.Settings .editemail{
+    display: none;
+}
+
+.Settings .editpassword{
+    display: none;
+}
+
+.Settings .password{
+    text-decoration: none;
+    color: black;
+}

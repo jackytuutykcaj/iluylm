@@ -1,0 +1,38 @@
+.ChangeImage #canvas{
+    border: 1px solid black;
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+    z-index: 0;
+}
+
+.ChangeImage #cropper{
+    border: 1px solid black;
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+    z-index: 1;
+}
+
+.ChangeImage input[type="file"]{
+    display: none;
+}
+
+.ChangeImage .browse{
+    cursor: pointer;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 1px 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-left: 310px;
+}
+
+.ChangeImage .apply{
+    cursor: pointer;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 1px 10px;
+    display: inline-block;
+    margin-left: 310px;
+}

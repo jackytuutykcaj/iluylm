@@ -1,0 +1,40 @@
+.GameChat{
+    height: 100%;
+    width: 29%;
+    float: right;
+}
+.chatlog{
+    border-radius: 10px;
+    float: right;
+    border: 2px black solid;
+    height: 83%;
+    width: 100%;
+    background-color: white;
+    overflow-y: scroll;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#username{
+    float: left;
+}
+
+.inputbox{
+    float: right;
+    height: 16%;
+    width: 99%;
+    border: 2px black solid;
+    border-radius: 10px;
+    resize: none;
+    outline: none;
+}
+
+.chatlog li{
+    margin-left: 10px;
+    word-wrap: break-word;
+}
+
+.chatlog::-webkit-scrollbar{
+    display: none;
+}

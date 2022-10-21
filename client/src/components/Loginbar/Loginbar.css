@@ -1,0 +1,28 @@
+.Loginbar{
+    float: right;
+    overflow: hidden;
+    width: fit-content;
+    background-color: #d3d3d3;
+    height: 80%;
+    border-bottom-left-radius: 10px;
+}
+
+.Loginbar a{
+    float: left;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    padding: 17px 20px;
+    border-left: 2px transparent solid;
+    border-right: 2px transparent solid;
+    width: 50px;
+}
+
+.Loginbar a:hover{
+    cursor: pointer;
+}
+
+.login, .register{
+    text-align: center;
+    margin-top: 100px;
+}

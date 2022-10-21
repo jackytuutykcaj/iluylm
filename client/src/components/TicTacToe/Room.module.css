@@ -1,0 +1,30 @@
+.Room{
+    height: 100%;
+    width: 70%;
+    float: left;
+}
+
+.left{
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+
+.toppanel{
+    border-radius: 10px;
+    float: left;
+    border: 2px black solid;
+    height: 30%;
+    width: 100%;
+    background-color: grey;
+}
+
+.players{
+    border-radius: 10px;
+    float: left;
+    border: 2px black solid;
+    height: 69%;
+    width: 100%;
+    margin-top: 0.4%;
+    background-color: white;
+}

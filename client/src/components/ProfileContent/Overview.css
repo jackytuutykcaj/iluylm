@@ -1,0 +1,65 @@
+.Overview .Postarea{
+    width: 500px;
+    height: 100px;
+    resize: none;
+}
+
+.Overview .bioandpost{
+    float: left;
+    width: 50%;
+}
+
+.Overview .Friends{
+    float: left;
+}
+
+.Overview .posts{
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 465px;
+}
+
+.Overview .posts::-webkit-scrollbar{
+    display: none;
+}
+
+.Overview #pencil{
+    display: none;
+}
+
+.Overview .Bio:hover #pencil{
+    display: inline;
+}
+
+.editBio{
+    width: 500px;
+    height: 200px;
+    resize: none;
+}
+
+.Overview #name{
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+}
+
+.Overview #date{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.Overview #context{
+    margin-top: 0px;
+}
+
+.Overview #pic{
+    float: left;
+    height: 100%;
+    margin-right: 2px;
+    border-radius: 9px;
+}
+
+.Overview #name_date{
+    margin-right: 0;
+    height: 4vh;
+}

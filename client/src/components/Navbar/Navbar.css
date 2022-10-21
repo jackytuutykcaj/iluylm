@@ -1,0 +1,57 @@
+.Navbar{
+    height: 80%;
+    width: fit-content;
+    float: left;
+    background-color: #d3d3d3;
+    border-bottom-right-radius: 10px;
+}
+
+.Navigation{
+    float: left;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.logo{
+    float: left;
+    width: 200px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.Navigation a{
+    float: left;
+    text-decoration: none;
+    color: black;
+    padding: 17px 20px;
+    border-left: 2px transparent solid;
+    border-right: 2px transparent solid;
+}
+
+.Navigation a:hover{
+    cursor: pointer;
+}
+
+.Navigation .dropdown{
+    float: left;
+    overflow: none;
+}
+
+.Navigation .menu-content{
+    background-color: darkgray;
+    display: none;
+    position: absolute;
+    z-index: 1;
+    margin-top: 54px;
+}
+
+.Navigation .menu-content a{
+    float: none;
+    display: block;
+    text-align: left;
+}
+
+.Navigation .dropdown:hover .menu-content{
+    display: block;
+}

@@ -1,0 +1,18 @@
+.App{
+    height: 100vh;
+}
+
+.App .topbar{
+    z-index: 1;
+    height: 7%;
+}
+
+.App .main-content{
+    height: 83vh;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.App .bottom-bar{
+    height: 1vh;
+}

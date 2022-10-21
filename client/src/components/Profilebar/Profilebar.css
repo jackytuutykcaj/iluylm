@@ -1,0 +1,47 @@
+.Profilebar{
+    float: right;
+    overflow: hidden;
+    background-color: #d3d3d3;
+    height: 80%;
+    border-bottom-left-radius: 10px;
+}
+
+.Profilebar .dropbtn{
+    float: left;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    padding: 17px 20px;
+    border-left: 2px transparent solid;
+    border-right: 2px transparent solid;
+    width: inherit;
+}
+
+.Profilebar .dropdown{
+    float: left;
+    width: fit-content;
+}
+
+.Profilebar .menu-content{
+    display: none;
+    float: left;
+    background-color: darkgray;
+    position: absolute;
+    z-index: 1;
+    margin-top: 52px;
+    width: inherit;
+}
+
+.Profilebar .menu-content a{
+    float: none;
+    display: block;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    color: black;
+    padding: 17px 20px;
+}
+
+.Profilebar .dropdown:hover .menu-content{
+    display: block;
+}

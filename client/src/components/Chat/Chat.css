@@ -1,0 +1,109 @@
+
+.Chat{
+    height: 88vh;
+}
+
+.Chat .chatlog{
+    float: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 70%;
+    height: 75%;
+    margin-top: 10px;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.Chat .log::-webkit-scrollbar{
+    display: none;
+}
+
+.Chat .chatlog li{
+    margin-left: 10px;
+    word-wrap: break-word;
+}
+
+.Chat .online{
+    float: right;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 29%;
+    height: 100%;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.Chat .msg{
+    float: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 70%;
+    height: 23.45%;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.Chat #online, #chatlog, #rooms{
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.Chat .input-box{
+    width: 99%;
+    height: 94%;
+    margin-left: 3px;
+    margin-top: 3px;
+    outline: none;
+    border: none;
+    resize: none;
+}
+
+.Chat #username{
+    float: left;
+}
+
+.Chat .msg .settings{
+    position: absolute;
+    left: 68.5%;
+    bottom: 4%;
+    z-index: 1;
+}
+
+.Chat .online-list{
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+.Chat .room-list{
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+.Chat .online-list:hover{
+    background-color: #ccc;
+}
+
+.Chat .room-list:hover{
+    background-color: #ccc;
+}
+
+.Chat #online{
+    overflow: none;
+}
+
+.Chat #rooms{
+    overflow: none;
+}

@@ -16,6 +16,7 @@ const bp = require('body-parser');
 const { MongoClient, ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
 var app = express();
+require('dotenv').config();
 
 app.use(cors());
 app.use(bp.urlencoded({ extended: false }))
@@ -23,7 +24,7 @@ app.use(bp.json());
 
 const saltRounds = 10;
 
-const url = "mongodb+srv://iluylm:Bundleofjoy1!@iluylm.9njj5.mongodb.net/";
+const url = process.env.MONGODB_URL;
 
 const client = new MongoClient(url, { useNewUrlParser: true });
 

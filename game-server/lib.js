@@ -1,5 +1,7 @@
 const { MongoClient } = require('mongodb');
-const url = "mongodb+srv://iluylm:Bundleofjoy1!@iluylm.9njj5.mongodb.net/";
+require('dotenv').config();
+//console.log(process.env)
+const url = process.env.MONGODB_URL;
 const client = new MongoClient(url, { useNewUrlParser: true });
 client.connect(err => {
     if (err) {

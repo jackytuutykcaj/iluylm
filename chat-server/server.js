@@ -10,8 +10,9 @@ const app = require('http').createServer(express);
 const io = require('socket.io')(app);
 const { MongoClient } = require('mongodb');
 const today = new Date();
+require('dotenv').config()
 
-const url = "mongodb+srv://iluylm:Bundleofjoy1!@iluylm.9njj5.mongodb.net/";
+const url = process.env.MONGODB_URL;
 
 const client = new MongoClient(url, { useNewUrlParser: true });
 

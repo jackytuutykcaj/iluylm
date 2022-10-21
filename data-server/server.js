@@ -5,6 +5,8 @@ const { MongoClient, ObjectId } = require('mongodb');
 var app = express();
 var path = require('path');
 var fs = require('fs');
+require('dotenv').config()
+//console.log(process.env)
 
 var dir = path.join(__dirname, 'images')
 
@@ -13,7 +15,7 @@ app.use(express.static(dir));
 app.use(bp.urlencoded({ extended: false }))
 app.use(bp.json());
 
-const url = "mongodb+srv://iluylm:Bundleofjoy1!@iluylm.9njj5.mongodb.net/";
+const url = process.env.MONGODB_URL;
 
 const client = new MongoClient(url, { useNewUrlParser: true });
 

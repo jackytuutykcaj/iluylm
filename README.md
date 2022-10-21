@@ -1,8 +1,8 @@
-#ILUYLM
+# ILUYLM
 
-An attempt in making a website like omgpop which was a social multiplayer gaming website that ran on flash. 
+## An attempt in making a website like [OMGPOP](https://en.wikipedia.org/wiki/OMGPop). 
 
-Website URL: iluylm.com
+Website URL: [iluylm.com](iluylm.com)
 
 Frontend: React, Javascript, Socket.io, Phaser and a few others.
 Backend: NodeJs, ExpressJs, socket.io, mongodb

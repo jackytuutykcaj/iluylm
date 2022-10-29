@@ -1,5 +1,2 @@
 *.env
-auth-server/node_modules/
-chat-server/node_modules/
-data-server/node_modules/
-game-server/node_modules/
+node_modules/

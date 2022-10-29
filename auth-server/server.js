@@ -35,7 +35,7 @@ const secret = '';
 //This connects to the Mongo database and tests if the connection is successful.
 client.connect(err => {
     if (err) {
-        console.log("error");
+        console.log(err);
     } else {
         console.log("Connected to database");
     }
@@ -75,7 +75,7 @@ app.use('/auth', (req, res) => {
         } else {
             bcrypt.compare(req.body.password, result.password, (err, compare) => {
                 if (compare == true) {
-                    var token = jwt.sign({ _id: result._id }, 'secretwordissecret', { expiresIn: '14d' })
+                    var token = jwt.sign({ _id: result._id }, process.env.SECRETKEY, { expiresIn: '14d' })
                     res.send({
                         token: token
                     })

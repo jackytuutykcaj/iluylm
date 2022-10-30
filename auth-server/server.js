@@ -120,7 +120,7 @@ app.use('/register', (req, res) => {
                                 //Create a token and send it back to the client
                                 query('account', { email: req.body.email })
                                     .then((result) => {
-                                        var token = jwt.sign({ _id: result._id }, 'secretwordissecret', { expiresIn: '1d' })
+                                        var token = jwt.sign({ _id: result._id }, process.env.SECRETKEY, { expiresIn: '1d' })
                                         res.send({
                                             token: token
                                         })
@@ -150,9 +150,10 @@ app.use('/register', (req, res) => {
 app.use('/getprofile', (req, res) => {
     var token = req.body.token;
     //Verify if the token is legit
-    jwt.verify(token, 'secretwordissecret', function (err, decoded) {
+    jwt.verify(token, process.env.SECRETKEY, function (err, decoded) {
         //If the token is invalid send an error back to the client
         if (err) {
+            console.log(err);
             res.send({
                 err: true
             })
@@ -172,7 +173,7 @@ app.use('/getprofile', (req, res) => {
 app.use('/getaccount', (req, res) => {
     var token = req.body.token;
 
-    jwt.verify(token, 'secretwordissecret', function (err, decoded) {
+    jwt.verify(token, process.env.SECRETKEY, function (err, decoded) {
         if (err) {
             res.send({
                 err: true
@@ -221,7 +222,7 @@ app.use('/updateaccount', (req, res) => {
                         .then(() => {
                             query('account', { username: req.body.newUsername })
                                 .then((result) => {
-                                    var token = jwt.sign({ _id: result._id }, 'secretwordissecret', { expiresIn: '2d' })
+                                    var token = jwt.sign({ _id: result._id }, process.env.SECRETKEY, { expiresIn: '2d' })
                                     res.send({
                                         token: token,
                                         fail: false

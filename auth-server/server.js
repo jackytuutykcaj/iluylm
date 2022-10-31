@@ -38,6 +38,9 @@ client.connect(err => {
         console.log(err);
     } else {
         console.log("Connected to database");
+        const database = client.db("iluylm");
+        const collection = database.collection('accounts');
+        collection.createIndex({"createdAt" : 1}, { expireAfterSeconds: 60});
     }
 })
 
@@ -288,6 +291,19 @@ app.use('/updatepassword', (req, res) => {
                 }
             })
         })
+})
+
+app.use('/guesttoken', (req, res)=>{
+    //generate random guest number as username
+    var username = "guest" + Math.floor(Math.random() * 100000)
+    //create temporary account with expiry date
+    insert("account", { "createdAt" : new Date(), username: username})
+    .then(result =>{
+        var token = jwt.sign({ _id: result._id }, process.env.SECRETKEY, { expiresIn: '60s' })
+        res.send({
+            token: token
+        })
+    })
 })
 
 app.listen(8080, function () {

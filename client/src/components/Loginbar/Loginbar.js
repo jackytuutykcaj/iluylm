@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Proptypes from 'prop-types';
 import './Loginbar.css'
 import Modal from 'react-modal';
@@ -23,6 +23,16 @@ function Loginbar({setToken}) {
     const [registermodal, setregistermodalopen] = useState(false);
     const [error, setError] = useState('');
 
+    useEffect(()=>{
+        if(!window.localStorage.getItem('token')){
+            //get a guest token
+            fetchData('http://153.92.214.195:8080/guesttoken', {})
+            .then(data=>{
+                setToken(data.token)
+            })
+        }
+    }, [])
+
     function opensigninmodal() {
         setsigninmodalopen(true);
         setError('');
@@ -39,6 +49,17 @@ function Loginbar({setToken}) {
 
     function closeregistermodal() {
         setregistermodalopen(false);
+    }
+
+    async function fetchData(url = '', data = {}) {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        return response.json()
     }
 
     async function fetchsignin(credentials){

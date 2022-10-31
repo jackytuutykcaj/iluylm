@@ -19,7 +19,6 @@
 
 .Profilebar .dropdown{
     float: left;
-    width: fit-content;
 }
 
 .Profilebar .menu-content{
@@ -29,7 +28,6 @@
     position: absolute;
     z-index: 1;
     margin-top: 52px;
-    width: inherit;
 }
 
 .Profilebar .menu-content a{
@@ -39,7 +37,7 @@
     border-bottom: 2px solid transparent;
     text-decoration: none;
     color: black;
-    padding: 17px 20px;
+    padding: 13px 17px;
 }
 
 .Profilebar .dropdown:hover .menu-content{

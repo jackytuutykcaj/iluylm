@@ -20,8 +20,10 @@ function App() {
   }, [])
   let bar;
   if (!token) {
+    //no token
     bar = <Loginbar setToken={setToken} />
   } else {
+    //yes token
     bar = <Profilebar token={token} />
   }
   return (

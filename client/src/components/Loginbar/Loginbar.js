@@ -94,8 +94,8 @@ function Loginbar({setToken}) {
             setError(token.err);
         }else{
             window.localStorage.clear();
-            window.location.reload();
             setToken(token);
+            window.location.reload();
         }
     }
 
@@ -109,7 +109,9 @@ function Loginbar({setToken}) {
         if(success.err){
             setError(success.err);
         }else{
+            window.localStorage.clear();
             setToken(success);
+            window.location.reload();
         }
     }
 

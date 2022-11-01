@@ -33,17 +33,22 @@ function Profile({ token, setToken }) {
             .then(data => {
                 if (data.err) {
                     window.localStorage.removeItem('token');
+                    window.localStorage.clear();
                     window.location.href = '/';
                     return false;
                 } else {
-                    var username = data.username;
-                    setusername(username);
-                    fetchData('http://153.92.214.195:8082/getimage', { username })
-                        .then(result => {
-                            if (result.exists) {
-                                setProfilePicID(result.name + '.png');
-                            }
-                        })
+                    if (!data.guest) {
+                        var username = data.username;
+                        setusername(username);
+                        fetchData('http://153.92.214.195:8082/getimage', { username })
+                            .then(result => {
+                                if (result.exists) {
+                                    setProfilePicID(result.name + '.png');
+                                }
+                            })
+                    }else{
+                        window.location.href = '/';
+                    }
                 }
             }).catch(error => {
                 window.localStorage.removeItem('token')

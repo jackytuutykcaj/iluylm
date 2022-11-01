@@ -28,7 +28,7 @@ function Loginbar({setToken}) {
             //get a guest token
             fetchData('http://153.92.214.195:8080/guesttoken', {})
             .then(data=>{
-                setToken(data.token)
+                setToken(data)
             })
         }
     }, [])
@@ -93,6 +93,8 @@ function Loginbar({setToken}) {
         if(token.err){
             setError(token.err);
         }else{
+            window.localStorage.clear();
+            window.location.reload();
             setToken(token);
         }
     }

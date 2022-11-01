@@ -39,8 +39,8 @@ client.connect(err => {
     } else {
         console.log("Connected to database");
         const database = client.db("iluylm");
-        const collection = database.collection('accounts');
-        collection.createIndex({"createdAt" : 1}, { expireAfterSeconds: 60});
+        const collection = database.collection('account');
+        collection.createIndex({"createdAt" : 1}, { expireAfterSeconds: 3600});
     }
 })
 
@@ -156,7 +156,6 @@ app.use('/getprofile', (req, res) => {
     jwt.verify(token, process.env.SECRETKEY, function (err, decoded) {
         //If the token is invalid send an error back to the client
         if (err) {
-            console.log(err);
             res.send({
                 err: true
             })
@@ -164,10 +163,18 @@ app.use('/getprofile', (req, res) => {
             //If the token is valid, send whatever we need to send back to the client
             query('account', { _id: ObjectId(decoded._id) })
                 .then(result => {
-                    res.send({
-                        username: result.username,
-                        _id: result._id
-                    })
+                    if(!result.guest){
+                        res.send({
+                            username: result.username,
+                            _id: result._id
+                        })
+                    }else{
+                        res.send({
+                            username: result.username,
+                            _id: result._id,
+                            guest: true
+                        })
+                    }
                 })
         }
     });
@@ -297,9 +304,9 @@ app.use('/guesttoken', (req, res)=>{
     //generate random guest number as username
     var username = "guest" + Math.floor(Math.random() * 100000)
     //create temporary account with expiry date
-    insert("account", { "createdAt" : new Date(), username: username})
+    insert("account", { "createdAt" : new Date(), username: username, guest: true})
     .then(result =>{
-        var token = jwt.sign({ _id: result._id }, process.env.SECRETKEY, { expiresIn: '60s' })
+        var token = jwt.sign({ _id: result.insertedId }, process.env.SECRETKEY, { expiresIn: '1h' })
         res.send({
             token: token
         })

@@ -22,9 +22,15 @@ function App() {
   if (!token) {
     //no token
     bar = <Loginbar setToken={setToken} />
+    window.localStorage.setItem('guest', 'true');
   } else {
+    console.log("yes")
     //yes token
-    bar = <Profilebar token={token} />
+    if(window.localStorage.getItem('guest') != 'true'){
+      bar = <Profilebar token={token} />
+    }else{
+      bar = <Loginbar setToken={setToken}/>
+    }
   }
   return (
     <div className='App'>

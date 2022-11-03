@@ -47,13 +47,21 @@ function Room({ startGame, socket }) {
 
     function showPlayers(players, ids, numPlayers) {
         var playerpanel = document.getElementById('players');
+        var http = new XMLHttpRequest();
         playerpanel.innerHTML = '';
         for (var i = 0; i < numPlayers; i++) {
             var player = document.createElement('div');
             var name = document.createElement('h5');
             var img = document.createElement('img');
             name.textContent = players[i];
-            img.src = url + ids[i] + ".png";
+            http.open('HEAD', url + ids[i] + ".png", false);
+            http.send();
+            if(http.status != 404){
+                img.src = url + ids[i] + ".png";
+            }else{
+                console.log("image not found");
+                img.src = url + "default.png";
+            }
             player.appendChild(img);
             player.appendChild(name);
             player.style.width = '50%';

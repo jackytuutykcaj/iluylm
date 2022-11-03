@@ -6,30 +6,29 @@ Modal.setAppElement('#root')
 
 const customStyle = {
     content: {
-        top: '25%',
-        bottom: '25%',
-        left: '25%',
-        right: '25%',
+        top: '30%',
+        bottom: '30%',
+        left: '35%',
+        right: '35%',
         borderRadius: '15px'
     }
 }
 
-function Chat({ io, token }) {
+function Chat({ socket, token }) {
     const [chatsetting, chatsettingsopen] = useState(false);
     const [username, setUsername] = useState('');
     const [redValue, setRedValue] = useState(0);
     const [greenValue, setGreenValue] = useState(0);
     const [blueValue, setBlueValue] = useState(0);
     const [color, setColor] = useState('');
-    const [socket] = useState(() => createCon('http://153.92.214.195:8081'))
 
     useEffect(() => {
-        document.title = "ILUYLM - Chat"
         setColor(localStorage.getItem('name-color'));
-        fetchData('http://153.92.214.195:8080/getprofile', { token }) 
+        fetchData('http://153.92.214.195:8080/getprofile', { token })
             .then(data => {
                 if (data.err) {
-                    window.localStorage.removeItem('token');
+                    window.localStorage.clear();
+                    window.location.reload();
                     return false;
                 } else {
                     setUsername(data.username);
@@ -65,7 +64,7 @@ function Chat({ io, token }) {
             })
         })
 
-        socket.on('help',(msg)=>{
+        socket.on('help', (msg) => {
             var item = document.createElement('li');
             var chatlog = document.getElementById('chatlog');
             item.textContent = msg;
@@ -76,11 +75,6 @@ function Chat({ io, token }) {
             console.log(error);
         })
     }, [socket, token])
-
-    function createCon(url) {
-        const socket = io(url, { transports: ['websocket'] });
-        return socket;
-    }
 
     async function fetchData(url = '', data = {}) {
         const response = await fetch(url, {
@@ -102,7 +96,7 @@ function Chat({ io, token }) {
         }
     }
 
-    function openmodal(){
+    function openmodal() {
         setRedValue(localStorage.getItem('red'))
         setGreenValue(localStorage.getItem('green'))
         setBlueValue(localStorage.getItem('blue'))
@@ -113,10 +107,10 @@ function Chat({ io, token }) {
         chatsettingsopen(false);
     }
 
-    function getColor(e){
-        if(e.target.id === 'redSlider') setRedValue(e.target.value);
-        if(e.target.id === 'blueSlider') setBlueValue(e.target.value);
-        if(e.target.id === 'greenSlider') setGreenValue(e.target.value);
+    function getColor(e) {
+        if (e.target.id === 'redSlider') setRedValue(e.target.value);
+        if (e.target.id === 'blueSlider') setBlueValue(e.target.value);
+        if (e.target.id === 'greenSlider') setGreenValue(e.target.value);
         setColor(`#${toHex(redValue)}${toHex(greenValue)}${toHex(blueValue)}`);
         document.getElementById('sampletext').style.color = color;
         localStorage.setItem('name-color', color);
@@ -125,7 +119,7 @@ function Chat({ io, token }) {
         localStorage.setItem('green', greenValue);
     }
 
-    function toHex(c){
+    function toHex(c) {
         var hex = parseInt(c).toString(16);
         return hex.length == 1 ? "0" + hex : hex;
     }
@@ -143,18 +137,24 @@ function Chat({ io, token }) {
             </div>
             <div className="msg">
                 <textarea className="input-box" id="input-box" onKeyDown={onEnterPress}></textarea>
-                <img className='settings' src={require('../../assets/gear.png')} width='20px' onClick={openmodal}/>
+                <img className='settings' src={require('../../assets/gear.png')} width='20px' onClick={openmodal} />
             </div>
             <Modal isOpen={chatsetting} onRequestClose={closemodal} style={customStyle}>
-                <div>
-                    <h3>Chat Settings</h3>
-                    <h4>Name Color</h4>
-                    <input type="range" min="0" max="255" id='redSlider' defaultValue={redValue} onChange={getColor}/><br/>
-                    <input type="range" min="0" max="255" id='greenSlider' defaultValue={greenValue} onChange={getColor}/><br/>
-                    <input type="range" min="0" max="255" id='blueSlider' defaultValue={blueValue} onChange={getColor}/><br/>
-                    <p>R:{redValue} G:{greenValue} B:{blueValue}</p>
-                    <p id='sampletext' style={{color: color}}>{username}</p>
-                </div>
+                {(!window.localStorage.getItem('guest')) &&
+                    <div>
+                        <h3>Chat Settings</h3>
+                        <h4>Name Color</h4>
+                        <input type="range" min="0" max="255" id='redSlider' defaultValue={redValue} onChange={getColor} /><br />
+                        <input type="range" min="0" max="255" id='greenSlider' defaultValue={greenValue} onChange={getColor} /><br />
+                        <input type="range" min="0" max="255" id='blueSlider' defaultValue={blueValue} onChange={getColor} /><br />
+                        <p>R:{redValue} G:{greenValue} B:{blueValue}</p>
+                        <p id='sampletext' style={{ color: color }}>{username}</p>
+                    </div>}
+                {(window.localStorage.getItem('guest')) &&
+                    <div>
+                        <p>Please signin or register to get access to chat settings.</p>
+                    </div>
+                }
             </Modal>
         </div>
     )

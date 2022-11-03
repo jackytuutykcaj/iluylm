@@ -17,6 +17,7 @@
     overflow: hidden;
     overflow-y: scroll;
     height: 465px;
+    scrollbar-width: none;
 }
 
 .Overview .posts::-webkit-scrollbar{

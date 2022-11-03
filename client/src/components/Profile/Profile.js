@@ -20,7 +20,7 @@ const customStyle = {
     }
 }
 
-function Profile({ token, setToken }) {
+function Profile({ token, setToken, createAlert }) {
     const [username, setusername] = useState('');
     const [show, enableContent] = useState('overview');
     const [modalIsOpen, setOpen] = useState(false);

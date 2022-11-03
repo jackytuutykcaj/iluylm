@@ -1,0 +1,16 @@
+.Notifbar{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.Notifbar .notification-text{
+    position: absolute;
+    border: 1px black solid;
+    margin-top: 5%;
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    background-color: aliceblue;
+}

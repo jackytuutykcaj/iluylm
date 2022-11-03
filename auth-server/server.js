@@ -163,16 +163,23 @@ app.use('/getprofile', (req, res) => {
             //If the token is valid, send whatever we need to send back to the client
             query('account', { _id: ObjectId(decoded._id) })
                 .then(result => {
-                    if(!result.guest){
-                        res.send({
-                            username: result.username,
-                            _id: result._id
-                        })
+                    console.log(result);
+                    if(result != null){
+                        if(!result.guest){
+                            res.send({
+                                username: result.username,
+                                _id: result._id
+                            })
+                        }else{
+                            res.send({
+                                username: result.username,
+                                _id: result._id,
+                                guest: true
+                            })
+                        }
                     }else{
                         res.send({
-                            username: result.username,
-                            _id: result._id,
-                            guest: true
+                            err: true
                         })
                     }
                 })

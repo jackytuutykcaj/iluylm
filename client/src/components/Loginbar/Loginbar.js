@@ -15,7 +15,7 @@ const customStyle = {
     }
 }
 
-function Loginbar({setToken}) {
+function Loginbar({setToken, createAlert}) {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
     const [email, setEmail] = useState();
@@ -30,6 +30,9 @@ function Loginbar({setToken}) {
             .then(data=>{
                 setToken(data)
             })
+        }
+        if(window.localStorage.getItem('guest')){
+            createAlert('You are currently a guest. Please signin or register to get full access.')
         }
     }, [])
 

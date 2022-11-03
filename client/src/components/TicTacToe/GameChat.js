@@ -5,7 +5,7 @@ function GameChat({ socket }) {
     useEffect(() => {
         socket.on('chatmessage', (message, user) => {
             var item = document.createElement('li');
-            var chatlog = document.getElementById('chatlog');
+            var chatlog = document.getElementById('gamechatlog');
             var username = document.createElement('div');
             username.id = styles.username
             var msg = document.createElement('div');
@@ -18,7 +18,7 @@ function GameChat({ socket }) {
         })
         socket.on('winner', (name)=>{
             var item = document.createElement('li');
-            var chatlog = document.getElementById('chatlog');
+            var chatlog = document.getElementById('gamechatlog');
             var msg = document.createElement('div');
             msg.id = 'message';
             msg.textContent = `${name} wins!`;
@@ -28,7 +28,7 @@ function GameChat({ socket }) {
 
         socket.on('turn', (name)=>{
             var item = document.createElement('li');
-            var chatlog = document.getElementById('chatlog');
+            var chatlog = document.getElementById('gamechatlog');
             var msg = document.createElement('div');
             msg.id = 'message';
             msg.textContent = `${name}'s turn`;
@@ -39,17 +39,17 @@ function GameChat({ socket }) {
     function onEnterPress(e) {
         if (e.keyCode === 13) {
             e.preventDefault();
-            var inputbox = document.getElementById('input-box');
+            var inputbox = document.getElementById('gameinput-box');
             socket.emit('send-message', inputbox.value);
             inputbox.value = "";
         }
     }
     return (
         <div className={styles.GameChat}>
-                <ul id='chatlog' className={styles.chatlog}>
+                <ul id='gamechatlog' className={styles.chatlog}>
                     <li>Welcome!</li>
                 </ul>
-            <textarea className={styles.inputbox} id="input-box" onKeyDown={onEnterPress} />
+            <textarea className={styles.inputbox} id="gameinput-box" onKeyDown={onEnterPress} />
         </div>
     )
 }

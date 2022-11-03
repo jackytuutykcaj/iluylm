@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Profilebar.css'
 
-function Profilebar({ token }) {
+function Profilebar({ token, createAlert }) {
     const [username, setusername] = useState('');
 
     useEffect(() => {
@@ -13,6 +13,9 @@ function Profilebar({ token }) {
                     return false;
                 } else {
                     setusername(data.username);
+                    if(window.location.pathname == '/'){
+                        createAlert("Welcome " + data.username);
+                    }
                 }
             }).catch(error =>{
                 window.localStorage.removeItem('token')
@@ -35,6 +38,7 @@ function Profilebar({ token }) {
     function logout() {
         window.localStorage.removeItem('token');
         window.location.href = '/';
+        
         return false;
     }
 
